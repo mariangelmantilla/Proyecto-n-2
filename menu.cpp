@@ -140,6 +140,41 @@ int main() {
 				}
 		    
 			}while(error==1);
+			Narchivo=strdup(temporal.c_str());
+			ifstream SalidaTexto(Narchivo);
+			
+			if(SalidaTexto.is_open()){
+				std::string linea;
+				
+				do{
+					error=0;
+					cout << "Introduce el numero de desplazamiento deseado:"; 
+				    cin >> numero; 
+					tam=numero.size();
+					    
+					for(int x=0;x<tam;x++){
+						
+					    if(numero[x]<48 || numero[x]>57){
+					    	error=1;
+					    	cout<<"por favor, introduzca solo numeros enteros\n";
+						}
+						else{
+							istringstream(numero)>>n;
+							
+						}
+					}
+				}while(error==1);
+				CESAR.setNumero(n);
+				
+				cout<<"Mensaje Decodificado:";
+			 	while(getline(SalidaTexto,linea)) {
+			 		CESAR.DecodificarText(CESAR.getNumero(), linea);
+			  		std::cout << linea<<endl;
+			 	}
+					
+			}
+		system("pause");	
+		system("cls");	
 			
 		}
 		if(opc=="3"){
