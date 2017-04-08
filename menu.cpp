@@ -7,7 +7,7 @@
 using namespace std; 
   
 int main() { 
-    CodigoCesar CESAR;
+    
 	string cadena,temporal;
 	char *Narchivo; 
     int n,bandera=0,tam,error=0;
@@ -36,7 +36,47 @@ int main() {
 		}while(error==1);
 		
 		if(opc=="1"){
+			do{
+		    	fflush(stdin);
+			    error=0;
+			    cout<<"Ingrese el Nombre del archivo con el que desea trabajar\nOJO,si el archivo no existe, este sera creado.\n\n";
+			    cout<<"El nombre no puede contener los siguientes caracteres:\n	<	>	?	:	|	/	*	\"	\n\nNombre del archivo:";
+			    getline(cin, temporal);
 			
+			
+				tam=temporal.size();
+			    for(int x=0;x<tam;x++){
+			    	if ((temporal[x]=='/' ||temporal[x]==':' || temporal[x]=='|' || temporal[x]=='<'|| temporal[x]=='?' || temporal[x]=='*'|| temporal[x]=='>'|| temporal[x]=='"') && error==0){
+			    		cout<<"por favor, no coloques caracteres no validos para un archivo\n";	
+			    		system("pause");
+			    		system("cls");
+						error=1;
+					}
+				}
+		    
+			}while(error==1);
+		    Narchivo=strdup(temporal.c_str());
+		    
+		    do{
+				error=0;
+				cout << "Introduce el numero de desplazamiento deseado:"; 
+			    cin >> numero; 
+				tam=numero.size();
+				    
+				for(int x=0;x<tam;x++){
+					
+				    if(numero[x]<48 || numero[x]>57){
+				    	error=1;
+				    	cout<<"por favor, introduzca solo numeros enteros\n";
+					}
+					else{
+						istringstream(numero)>>n;
+						
+					}
+				}
+			}while(error==1);
+			CESAR.setNumero(n);
+			system("cls");
 		    
 		}
 		
