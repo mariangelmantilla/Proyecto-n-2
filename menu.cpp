@@ -119,7 +119,27 @@ int main() {
 		}
 		
 		if(opc=="2"){
+			do{
+		    	fflush(stdin);
+			    error=0;
+			    cout<<"Ingrese el Nombre del archivo que desea decodificar.\n\n";
+			    cout<<"El nombre no puede contener los siguientes caracteres:\n	<	>	?	:	|	/	*	\"	\n\nNombre del archivo:";
+			    getline(cin, temporal);
 			
+			
+				tam=temporal.size();
+			    for(int x=0;x<tam;x++){
+			    	if ((temporal[x]=='/' ||temporal[x]==':' || temporal[x]=='|' || temporal[x]=='<'|| temporal[x]=='?' || temporal[x]=='*'|| temporal[x]=='>'|| temporal[x]=='"')&& error==0){
+			    		
+						
+						cout<<"por favor, no coloques caracteres no validos para un archivo\n";	
+			    		system("pause");
+			    		system("cls");
+						error=1;
+					}
+				}
+		    
+			}while(error==1);
 			
 		}
 		if(opc=="3"){
