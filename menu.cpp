@@ -77,6 +77,44 @@ int main() {
 			}while(error==1);
 			CESAR.setNumero(n);
 			system("cls");
+			cout << "Introduce el mensaje a codificar\npara salirse,en la ultima linea escriba solamente :SACAME\nMensaje:" << endl; 
+		    ofstream EntradaLimpiar(Narchivo,std::ios::trunc);
+		    EntradaLimpiar.close();
+			
+			do{
+			
+			    getline(cin, cadena); 
+			    
+				if(cadena==""){
+			    	cadena=" ";
+				}
+				if(cadena==":SACAME" || cadena==":sacame"){
+		    		bandera=1;
+					cadena="";
+				}	
+			
+				CESAR.CodificarText((-CESAR.getNumero()), cadena); 
+				CESAR.setMensaje(cadena);
+			    ofstream Entrada(Narchivo,std::ios::app);
+			    Entrada<<CESAR.getMensaje()<<endl;
+			    Entrada.close();
+		    
+		    
+		 	}while(bandera!=1);
+		
+		    
+		
+		    
+		    ifstream Imprimir(Narchivo);
+			std::string linea;
+			cout<<"Mensaje Codificado:";
+		 	while(getline(Imprimir,linea)) {
+		  		std::cout << linea<<endl;
+		 	}
+		 	Imprimir.clear();
+			Imprimir.close();
+			system("pause");	
+			system("cls");	
 		    
 		}
 		
